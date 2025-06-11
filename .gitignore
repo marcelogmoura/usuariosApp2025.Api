@@ -1,0 +1,18 @@
+# Pasta de configurações do Visual Studio
+.vs/
+
+# Pastas de compilação
+[Bb]in/
+[Oo]bj/
+
+# Arquivos gerados pelo usuário
+*.user
+*.suo
+
+# Arquivos de log e temporários
+*.log
+*.tmp
+*.bak
+
+# Dependências do Docker
+docker-compose.override.yml
