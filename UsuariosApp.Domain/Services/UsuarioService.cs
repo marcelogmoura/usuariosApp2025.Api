@@ -15,10 +15,12 @@ namespace UsuariosApp.Domain.Services
     public class UsuarioService : IUsuarioService
     {
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IUsuarioMessage _usuarioMessage;
 
-        public UsuarioService(IUsuarioRepository usuarioRepository)
+        public UsuarioService(IUsuarioRepository usuarioRepository, IUsuarioMessage usuarioMessage)
         {
             _usuarioRepository = usuarioRepository;
+            _usuarioMessage = usuarioMessage;
         }
 
         public CriarUsuarioResponseDto CriarUsuario(CriarUsuarioRequestDto request)
@@ -36,6 +38,8 @@ namespace UsuariosApp.Domain.Services
 
             _usuarioRepository.Adicionar(usuario);
 
+            #region Enviar mensagem para o RabbitMQ
+
             var usuarioMessage = new UsuarioMessageDto
             {
                 Id = usuario.Id,
@@ -44,8 +48,9 @@ namespace UsuariosApp.Domain.Services
                 DataHoraCadastro = DateTime.UtcNow
             };
 
-            
+            _usuarioMessage.EnviarMensagem(usuarioMessage);
 
+            #endregion
 
 
             var response = new CriarUsuarioResponseDto
