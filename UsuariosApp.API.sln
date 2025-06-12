@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens", "Itens", "{02EA681E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsuariosApp.Infra.Messages", "UsuariosApp.Infra.Messages\UsuariosApp.Infra.Messages.csproj", "{615C99DA-188F-4D52-A483-5345F164B435}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UsuarioApp.Tests", "UsuarioApp.Tests\UsuarioApp.Tests.csproj", "{CE01EBEC-1DCA-4515-B3E5-7C04B14F7FC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{615C99DA-188F-4D52-A483-5345F164B435}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{615C99DA-188F-4D52-A483-5345F164B435}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{615C99DA-188F-4D52-A483-5345F164B435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE01EBEC-1DCA-4515-B3E5-7C04B14F7FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE01EBEC-1DCA-4515-B3E5-7C04B14F7FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE01EBEC-1DCA-4515-B3E5-7C04B14F7FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE01EBEC-1DCA-4515-B3E5-7C04B14F7FC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

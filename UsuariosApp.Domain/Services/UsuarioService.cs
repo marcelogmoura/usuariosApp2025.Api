@@ -38,7 +38,7 @@ namespace UsuariosApp.Domain.Services
 
             _usuarioRepository.Adicionar(usuario);
 
-            #region Enviar mensagem para o RabbitMQ
+            #region Enviar mensagem para a mensageria   
 
             var usuarioMessage = new UsuarioMessageDto
             {

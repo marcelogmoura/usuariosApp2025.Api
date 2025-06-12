@@ -22,19 +22,19 @@ namespace UsuariosApp.Infra.Messages.Producers
             };
 
             using var connection = connectionFactory.CreateConnection();
-            //conectando / criando a fila
+
             using (var model = connection.CreateModel())
             {
-                //construindo a fila
+
                 model.QueueDeclare(
-                queue: RabbitMQSettings.Queue, //nome da fila
-                durable: true, //fila não será apagada se o servidor for reiniciado
-                autoDelete: false, //não permitir a remoção de mensagens automaticamente                    exclusive: false, //permitir que                    a fila seja compartilhada com outros sistemas
-                arguments: null //nenhum argumento adicional
+                queue: RabbitMQSettings.Queue,
+                durable: true, // fila n sera apagada se o servidor reiniciar
+                autoDelete: false, // n permitir remocao de mensagens automaticamente
+                arguments: null
                 );
-                //serializando os dados do usuário para JSON
+
                 var jsonContent = JsonConvert.SerializeObject(usuario);
-                //gravar os dados na fila
+
                 model.BasicPublish(
                 exchange: string.Empty,
                 routingKey: RabbitMQSettings.Queue,
