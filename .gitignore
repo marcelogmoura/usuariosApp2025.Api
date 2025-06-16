@@ -1,0 +1,26 @@
+# Visual Studio / .NET Core
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio 2015/2017/2019/2022 cache/options
+.vs/
+
+# Rider
+.idea/
+
+# Mac
+.DS_Store
+
+# App Settings local files
+appsettings.Development.json
+
+# Secrets
+secrets.json
