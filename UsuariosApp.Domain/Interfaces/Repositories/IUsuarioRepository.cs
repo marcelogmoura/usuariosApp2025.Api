@@ -12,5 +12,7 @@ namespace UsuariosApp.Domain.Interfaces.Repositories
         void Adicionar(Usuario usuario);
 
         bool VerificarEmailJaExiste(string email);
+
+        Usuario? Obter(string email, string senha);
     }
 }

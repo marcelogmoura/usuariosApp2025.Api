@@ -22,7 +22,6 @@ namespace UsuariosApp.Domain.Services
             _usuarioRepository = usuarioRepository;
             _usuarioMessage = usuarioMessage;
         }
-
         public CriarUsuarioResponseDto CriarUsuario(CriarUsuarioRequestDto request)
         {
             if ( _usuarioRepository.VerificarEmailJaExiste(request.Email))
@@ -56,6 +55,25 @@ namespace UsuariosApp.Domain.Services
             };
 
             return response;
+        }
+        public AutenticarUsuarioResponseDto AutenticarUsuario(AutenticarUsuarioRequestDto request)
+        {
+            var usuario = _usuarioRepository.Obter(request.Email, CryptoHelper.EncryptSHA256(request.Senha));
+
+            if (usuario == null)
+                throw new Exception("Acesso negado.");
+
+            var response = new AutenticarUsuarioResponseDto
+            {
+                Id = usuario.Id,
+                Nome = usuario.Nome,
+                Email = usuario.Email,
+                DataHoraAcesso = DateTime.Now,
+                Token = JwtHelper.CreateToken(usuario)
+            };
+
+            return response;
+
         }
     }
 }

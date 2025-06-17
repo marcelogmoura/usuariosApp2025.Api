@@ -51,5 +51,5 @@ app.MapControllers();
 
 app.Run();
 
-// program publica para os testes nao falharem
+// program public para os testes nao falharem
 public partial class Program { }

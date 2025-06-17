@@ -19,7 +19,6 @@ namespace UsuariosApp.Infra.Data.Repositories
                 dataContext.SaveChanges();
             }
         }
-
         public bool VerificarEmailJaExiste(string email)
         {
             using (var dataContext = new DataContext())
@@ -28,6 +27,17 @@ namespace UsuariosApp.Infra.Data.Repositories
                     .Set<Usuario>()
                     .Where(u => u.Email.Equals(email))
                     .Any();
+            }
+        }
+
+        public Usuario? Obter(string email, string senha)
+        {
+            using (var dataContext = new DataContext())
+            {
+                return dataContext
+                    .Set<Usuario>()
+                    .Where(u => u.Email.Equals(email) && u.Senha.Equals(senha))
+                    .FirstOrDefault();
             }
         }
     }

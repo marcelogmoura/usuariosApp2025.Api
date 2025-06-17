@@ -10,5 +10,7 @@ namespace UsuariosApp.Domain.Interfaces.Services
     public interface IUsuarioService
     {
         CriarUsuarioResponseDto CriarUsuario(CriarUsuarioRequestDto request);
+
+        AutenticarUsuarioResponseDto AutenticarUsuario(AutenticarUsuarioRequestDto request);
     }
 }

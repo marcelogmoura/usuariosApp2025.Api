@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using UsuariosApp.Domain.Interfaces.Services;
 using UsuariosApp.Domain.Models.Dtos;
@@ -41,10 +42,30 @@ namespace UsuariosApp.API.Controllers
             }
         }
 
-            [HttpPost("autenticar")]
-        public IActionResult Autenticar()
+        [HttpPost("autenticar")]
+        public IActionResult Autenticar([FromBody] AutenticarUsuarioRequestDto request)
+            
         {
-            return Ok("Usuário autenticado com sucesso!");
+            try
+            {
+                var response = _usuarioService.AutenticarUsuario(request);
+
+                return StatusCode(200, new
+                {
+                    Message = "Usuário autenticado com sucesso",
+                    Data = response
+    });
+            }
+            catch (ApplicationException e)
+            {
+                return StatusCode(401, new { e.Message }); // Unauthorized
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, new { e.Message });
+            }
+
         }
+
     }
 }
