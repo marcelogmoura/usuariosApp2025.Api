@@ -1,9 +1,6 @@
-﻿using Azure.Core;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using UsuariosApp.Domain.Interfaces.Services;
 using UsuariosApp.Domain.Models.Dtos;
-using UsuariosApp.Domain.Services;
 
 namespace UsuariosApp.API.Controllers
 {

@@ -16,6 +16,15 @@ builder.Services.AddRouting(map => map.LowercaseUrls = true);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(config =>
+{
+    config.AddPolicy("DefaultPolicy",
+        builder => builder
+            .WithOrigins("http://localhost:4200")            
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 #region injeções de dependência
 
 builder.Services.AddTransient<IUsuarioService, UsuarioService>();
@@ -34,6 +43,8 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+app.UseCors("DefaultPolicy");
 
 app.UseSwagger();
 app.UseSwaggerUI();
