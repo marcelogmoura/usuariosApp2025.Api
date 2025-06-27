@@ -29,11 +29,12 @@ builder.Services.AddCors(config =>
 
 builder.Services.AddTransient<IUsuarioService, UsuarioService>();
 builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
-builder.Services.AddTransient<IUsuarioMessage, IUsuarioMessageProducer>();
+builder.Services.AddTransient<IUsuarioMessage, UsuarioMessageProducer>();
 #endregion
 
+
 #region Configurando os Workers (serviços de segundo plano)
-builder.Services.AddHostedService<UsuarioMessageConsumer>();
+// builder.Services.AddHostedService<UsuarioMessageConsumer>();  // comentado para manter a mensagem no RabbitMQ para testes
 #endregion
 
 var app = builder.Build();
